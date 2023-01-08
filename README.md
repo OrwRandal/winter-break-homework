@@ -18,5 +18,5 @@ When you are done with ALL problems:
 * Edit this README and paste the URL below:
 
 Paste your URL HERE:
-
+https://www.codewars.com/users/OwrRandal/completed
 Submit the URL for this Github Repo to Canvas

@@ -11,10 +11,14 @@ C
 */
 function solution(number) {
   let sum = 0;
+  //I created a variable in order to store the final sum
   for (let i = 3; i < number; i++) {
+  //I made a loop that will start at 3 because 3 is the first multiple that would count. This loop will end when i reaches the number argument
     if (i % 3 === 0 || i % 5 === 0) sum += i;
+  //this if statement checks if each number is a multiple of either 3 or 5, if it is, it will add it to the sum variable
   }
   return sum
+  //this will return the sum of all the multiples combined after the loop fully runs
 }
 
 /*
@@ -39,6 +43,9 @@ function likes(names) {
     names.length === 2 ? `${names[0]} and ${names[1]} like this` :
     names.length === 3 ? `${names[0]}, ${names[1]} and ${names[2]} like this` :
     `${names[0]}, ${names[1]} and ${names.length - 2} others like this`
+    //I cant really explain this tbh, depending on the amount of friends there are, this tunary will return a string listing the friends
+    //For the last one, it will display the first 2 names and then subtracks 2 from the lenth because
+    //it is referencing the amount of names there are besides the first 2 that is already written. 
 }
 
 /*
@@ -51,7 +58,10 @@ C
 */
 function findUniq(arr) {
   arr.sort((a, b) => a - b)
+  //So, if all numbers except for 1 are the same, the outliar is either less than the rest in value, or greater than the rest
+  //I decided to sort them because this way, the outliar will either be at the start of the array or at the end after this
   return arr[0] !== arr[1] ? arr[0] : arr[arr.length - 1];
+  //If the first 2 are the same, then the outliar , must be at the end, if theyre not the same, the outliar must be at the start
 }
 
 /*
@@ -67,7 +77,9 @@ C -
 function findOutlier(integers) {
   const evens = integers.filter(a => a % 2 === 0)
   const odds = integers.filter(a => a % 2 !== 0)
+  //If theirs only 1 outliar, if i sort the evens and odds to 2 seperate variables, i would then be able to count which one only has 1 value
   return evens.length === 1 ? evens[0] : odds[0];
+  //if the evens varbale has 1 in length, then it has to be the outliar, if it does not then it must be in odds
 }
 
 /*
@@ -88,14 +100,21 @@ C -
 */
 function duplicateCount(text) {
   let result = 0;
+  //This variable will keep track of all duplicates
   const counter = {};
+  //Thsi will be a frequency counter to check the amount of times each letter appears
   text = text.toLowerCase();
+  //This will make this function case insensitive
   for (let char of text) {
     char in counter ? counter[char]++ : counter[char] = 1;
   }
-  for (let index in counter)
+  //this add each letter to the frequency counter along with the amount of times they show up
+  for (let index in counter){
     if (counter[index] > 1) result++;
+  }
+  //this will check how many letters show up more than once, whenever it does find a latter like that, it will add 1 to the result variable
   return result
+  //this will return the amount of letters that show up more than once
 }
 
 /*
@@ -113,12 +132,18 @@ C -
 */
 function moveZeros(arr) {
   let result = [];
+  //we create a new empty array to hold the values that we will return
   let counter = 0;
+  //this is to keep track of the amount of zeros in the array
   for (let index of arr) {
     index !== 0 ? result.push(index) : counter++;
   }
+  //this will loop through the array. If the number were on is not a zero, we will push it into the new array
+  //if it IS a zero, add 1 to the counter
   for (let i = 1; i <= counter; i++) result.push(0);
+  //this loop will add zeros to the new array depending on the amount that is in counter
   return result;
+  //this should return a new array with all the zeros moved to the end
 }
 
 /*
@@ -130,17 +155,22 @@ A - Make an empty array for the result
     Split the string at every space
     Iterate through the split string
     With each index, use substring to add every letter except the first
-    plus the first letter plys 'ay'
+    plus the first letter plus 'ay'
     If its not a letter, just push it regularly 
     return result
 C -
 */
 function pigIt(str) {
   let result = [];
+  //we make an empty array to push the new values to
   str = str.split(' ');
+  //we split the string in order to access each word indivisually
   for (let word of str) {
-    /[\w]/.test(word) ? result.push(`${word.substring(1,word.length)}${word[0]}ay`) :
+    /[\w]/.test(word) ? result.push(`${word.substring(1,word.length)}${word[0]}ay`):
       result.push(word)
+      //we used a tunary to check if it is a word first in order to ignore punchuation
+      //The pedac should explain the specifics
   }
   return result.join(" ")
+  //we then returned the new array joined because we need to make it into string once again
 }
